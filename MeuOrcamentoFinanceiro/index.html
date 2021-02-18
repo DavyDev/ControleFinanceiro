@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="logica.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    
+
+
+    <title>Meu Oçamento</title>
+  </head>
+
+  <body onload="listaDeDados () , listaDeDados_2 ()">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container"> 
+            <a class="navbar-brand"href="">
+                Logo do Site
+            </a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#escondeDiv">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="escondeDiv">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="">Despesas</a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="">Orcamento</a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="">Orcamento</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+
+    </nav>
+
+    <div class=" container">
+
+        <div class="row">
+            <!-- Parte onde sera recebida as informações para registar um rendimento-->
+            <div  class="col-md-6 mb-4">
+
+                <div id="bordaRendimento">
+
+                    <div class="topoRendimentos pt-1 pb-1">
+                        <i class=" ml-2 fas fa-plus "></i> <span>Rendimentos</span>
+                    </div>
+                
+                    <div class="ml-2 mr-2 mt-3">
+                        <div class="form-row mb-3">
+    
+                            <div class="col-5 ml-4">
+                                <label for="tipo" class="labels">Categoria</label>
+    
+                                <select class="form-control form-control-sm " id="categoria">
+                                    <option value="">Tipo</option>
+                                    <option value="1">Alimentação</option>
+                                    <option value="2">Educação</option>
+                                    <option value="3">Lazer</option>
+                                    <option value="4">Saúde</option>
+                                    <option value="5">Transporte</option>
+                                </select>
+                            </div>
+    
+                            <div class="col-5 ml-4">
+                                <label for="data" class="labels">Data</label>
+                                <input id="data" class="form-control form-control-sm" type="date" placeholder="Data" style ="cursor:pointer ;">
+                            
+                            </div>
+    
+                            
+    
+                        </div>
+    
+                        <div class="form-row mb-4">
+    
+                            <div class="col-9 mb-4">
+                                <label for="descricao" class="labels">Descrição</label>
+                                <input id="descricao" class="form-control form-control-sm" type="text" placeholder="Descrição ">
+                            </div>
+    
+                            <div class="col-3 mb-4">
+                                <label for="valor" class="labels">Valor</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    
+                                    <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                    </div>
+                                    
+                                    <input id="valor" type="text" class="form-control" placeholder="Valor">
+                                </div>
+                            </div>
+    
+                            <div class="col-12">
+                                <button class="btn btn-primary form-control" onclick="pegaDadosRendimentos()">
+                                    
+                                    <span class="ml-1"><i  class= "fas fa-sign-in-alt"></i></span>
+                                    Registar rendimento
+                                </button>
+    
+                                
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parte onde sera recebida as informações para registar uma despesa-->
+            <div  class="col-md-6 ">
+
+                <div id="bordaDespesa">
+
+                    <div class="topoDespesas pt-1 pb-1">
+                        <i class=" ml-2 fas fa-minus "></i> <span>Despesas</span>
+                    </div>
+
+                    <div class="ml-2 mr-2 mt-3">
+
+                        <div class="form-row mb-3">
+
+                            <div class="col-5 ml-4">
+                                <label for="tipo" class="labels">Categoria</label>
+    
+                                <select class="form-control form-control-sm " id="categoria_B">
+                                    <option value="">Tipo</option>
+                                    <option value="1">Alimentação</option>
+                                    <option value="2">Educação</option>
+                                    <option value="3">Lazer</option>
+                                    <option value="4">Saúde</option>
+                                    <option value="5">Transporte</option>
+                                </select>
+                            </div>
+    
+                            <div class="col-5 ml-4">
+                                <label for="data" class="labels">Data</label>
+                                <input id="data_B" class="form-control form-control-sm" type="date" placeholder="Data" style ="cursor:pointer ;">
+                            
+                            </div>
+    
+                            
+    
+                        </div>
+    
+                        <div class="form-row mb-4">
+    
+                            <div class="col-9 mb-4">
+                                <label for="descricao" class="labels">Descrição</label>
+                                <input id="descricao_B" class="form-control form-control-sm" type="text" placeholder="Descrição ">
+                            </div>
+    
+                            <div class="col-3 mb-4">
+                                <label for="valor" class="labels">Valor</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    
+                                    <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                    </div>
+                                    
+                                    <input id="valor_B" type="text" class="form-control" placeholder="Valor">
+                                </div>
+                            </div>
+    
+                            <div  class="col-12">
+                                <button  class="btn btn-danger form-control " onclick="pegaDadosDespesas()">
+                                    
+                                    <span class="ml-1"><i id="line" class="fas fa-sign-in-alt "></i></span>
+                                    Registar despesa
+                                </button>
+    
+                                
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                
+                
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+
+            <div  class="col-md-6 mb-3">
+                
+                <div id="bordaRegistraRendi">
+
+                    <div class="topoRendimentos  pt-1 pb-1">
+                        <i class=" ml-2 mr-2 fas fa-chart-line"></i>
+                        Ultimos 10 rendimentos
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    
+                                </tr>
+                            </thead>
+
+                            <tbody id="listaRendimentos">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-center">
+                        <a class="nav-link" href="">Visualisar histórico de rendimentos</a>
+                    </div>
+
+                </div>
+
+                
+                
+
+            </div>
+
+            <div  class="col-md-6 ">
+                
+                <div id="bordaRegistraDespe">
+
+                    <div class="topoDespesas  pt-1 pb-1">
+                        <i class=" ml-2 mr-2 fas fa-chart-line"></i>
+                        Ultimas 10 despesas
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    
+                                  </tr>
+                            </thead>
+
+                            <tbody id="listaDespesas">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-center">
+                        <a class="nav-link" href="">Visualisar histórico de despedas</a>
+                    </div>
+
+                </div>
+                
+
+            </div>
+
+
+        </div>
+
+        <div class="row mt-4">
+
+            <div class="col-md-6">
+
+                <div class="bordaGrafiGastos">
+                     
+                    <div class="topoGrafiGastos pt-1 pb-1">
+                        <i class="ml-2 mr-2 fas fa-chart-bar"></i>
+                        Maiores rendimentos no periodo
+                    </div>
+
+                    <div id="">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="bordaGrafiGastos">
+                     
+                    <div class="topoGrafiGastos pt-1 pb-1">
+                        <i class="ml-2 mr-2 fas fa-chart-bar"></i>
+                        Fluxo de gastos
+                    </div>
+
+                    <div id="myChart_2">
+                        Grafico que mostra quantos por % foi gatos em cada item
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalRegistraDespesas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="estilo_Textos" >
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div id="texto-corpo" class="modal-body">
+            
+            </div>
+            <div class="modal-footer">
+            <button id="botao" type="button" data-dismiss="modal">Voltar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+
+    <script src="logica.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

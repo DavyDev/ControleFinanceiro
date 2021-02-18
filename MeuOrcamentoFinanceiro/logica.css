@@ -1,0 +1,46 @@
+#bordaRendimento{
+    border: #007bff solid 2px;
+}
+
+.topoRendimentos{
+    
+    background-color: #007bff;
+    color: white;
+}
+
+
+#bordaDespesa{
+    border: #dc3545 solid 2px;
+}
+
+.topoDespesas{
+    background-color: #dc3545;
+    color: white;
+    
+}
+
+.labels {
+    font-weight: 500
+}
+
+#line{
+    position: relative;
+    top: 2px;
+}
+
+#bordaRegistraRendi{
+    border: #007bff solid 2px;
+}
+
+#bordaRegistraDespe{
+    border: #dc3545 solid 2px;
+}
+
+.bordaGrafiGastos{
+    border: #343a40 solid 2px;
+}
+
+.topoGrafiGastos{
+    background-color: #343a40;
+    color: #fff;
+}
