@@ -52,6 +52,62 @@ class localStorages{
         return arrayDadosInseridos
     }
 
+    cria_Grafico(motivosDados, maioresDados){
+        
+
+        // let ctx = document.getElementById("myChart")
+
+        // document.getElementById('myChart').innerHTML = ""
+
+        // let meu_grafico = new Chart (ctx, {
+        //     type : "bar",
+        //     data : {
+        //         labels : motivosDados,
+        //         datasets: [
+        //             {
+        //                 label : "Maiores Rendiementos do Periodo ",
+        //                 data : maioresDados,
+        //                 backgroundColor : [
+
+        //                     '#457b9d',
+        //                     '#f4a261',
+        //                     '#e9c46a',
+        //                     '#02c39a',
+        //                     '#c44536',
+        //                     '#011627',
+        //                     '#283618',
+        //                     '#540b0e',
+        //                     '#c9ada7',
+        //                     '#e36414',
+        //                     '#ce4257'
+        //                 ],
+        //                 borderWidth : 2,
+        //                 width : 5
+
+
+        //             }
+        //         ]
+        //     },
+        //     options : {
+        //         title : {
+        //             text : "Grafico do Dados",
+        //             display : true,
+        //             fontSize : 25
+        //         },
+                
+        //         scales : {
+        //             yAxes : [
+        //                 {
+        //                     ticks : {
+        //                         beginAtZero : true
+        //                     }
+        //                 }
+        //             ]
+        //         }
+        //     }
+        // })
+    }
+
 
 }
 
@@ -61,7 +117,7 @@ let InseredadosLocal = new localStorages()
 //Aqui é a função que cria os elementos da tabela e insere os dados recuperaddos dentro da array de objetos do local host
 // para inseri-las na tabela HTML
 function listaDeDados (){
-
+    
     let tbody = document.getElementById("listaRendimentos")
 
     //todas vez que a função for chamada, faremos com que inicie tudo em branco para então sempre registrar 
@@ -70,8 +126,8 @@ function listaDeDados (){
 
     let listaDeDados = []
     let listaDeDados_maiores = []
-    let maioresDados = [] //Este vetor armazena os três maiores rendimentos
-    let motivosDados = []
+    let maioresDados  //Este vetor armazena os três maiores rendimentos
+    let motivosDados
 
     listaDeDados = InseredadosLocal.recuperaTodosRegistros ()
     listaDeDados_maiores = InseredadosLocal.recuperaTodosRegistros ()
@@ -80,30 +136,34 @@ function listaDeDados (){
     let maior
 
     // Esta condição faz a logica paracapturar os três maiores rendimentos.
-    if(listaDeDados_maiores.length <= 3){
-        for(let x = 0; x < listaDeDados_maiores.length; x++){
-            maioresDados.push(listaDeDados_maiores[x].valor)
-            motivosDados.push(listaDeDados_maiores[x].descricao)
-        }
-    }
-    else if(listaDeDados_maiores.length >= 4){
-        for(let y = 0; y < 3; y++){
-            inicio = 0
+    // if(listaDeDados_maiores.length <= 3){
+    //     maioresDados = []
+    //     motivosDados = []
+    //     for(let x = 0; x < listaDeDados_maiores.length; x++){
+    //         maioresDados.push(listaDeDados_maiores[x].valor)
+    //         motivosDados.push(listaDeDados_maiores[x].descricao)
+    //     }
+    // }
+    // else if(listaDeDados_maiores.length >= 4){
+    //     maioresDados = []
+    //     motivosDados = []
+    //     for(let y = 0; y < 3; y++){
+    //         inicio = 0
 
-            for(let i = inicio + 1; i < listaDeDados_maiores.length; i ++){
+    //         for(let i = inicio + 1; i < listaDeDados_maiores.length; i ++){
 
-                if(listaDeDados_maiores[inicio].valor < listaDeDados_maiores[i].valor){
-                    inicio = i
-                    maior = inicio
-                }
+    //             if(listaDeDados_maiores[inicio].valor < listaDeDados_maiores[i].valor){
+    //                 inicio = i
+    //                 maior = inicio
+    //             }
 
-            }
+    //         }
 
-            maioresDados.push(listaDeDados_maiores[maior].valor)
-            motivosDados.push(listaDeDados_maiores[maior].descricao)
-            listaDeDados_maiores.splice(maior, 1)
-        }
-    }
+    //         maioresDados.push(listaDeDados_maiores[maior].valor)
+    //         motivosDados.push(listaDeDados_maiores[maior].descricao)
+    //         listaDeDados_maiores.splice(maior, 1)
+    //     }
+    // }
         
     console.log(maioresDados)
     
@@ -150,87 +210,40 @@ function listaDeDados (){
         btn.innerHTML = `<i class="fas fa-times"></i>`
         btn.id = `${listaDeDados[i].id}`
 
+        // let true_false  
+
         btn.onclick= function deletaRegistro() {
             let btn_id = btn.id
+            
+            
 
             localStorage.removeItem(btn_id)
 
             window.location.reload()
+
         }
 
+        
+
         linha.insertCell(4).append(btn)
+        
     } 
 
     console.log(listaDeDados)
     console.log(tbody)
+    
+    console.log("-------------------------")
 
-    document.getElementById('myChart').innerHTML = ''
+    
 
-    let ctx = document.getElementById("myChart")
+    InseredadosLocal.cria_Grafico(motivosDados, maioresDados)
+    
+    
+    
+    
+        
 
-    let meu_grafico = new Chart (ctx, {
-        type : "bar",
-        data : {
-            labels : motivosDados,
-            datasets: [
-                {
-                    label : "Maiores Rendiementos do Periodo ",
-                    data : maioresDados,
-                    backgroundColor : [
-
-                        '#457b9d',
-                        '#f4a261',
-                        '#e9c46a',
-                        '#02c39a',
-                        '#c44536',
-                        '#011627',
-                        '#283618',
-                        '#540b0e',
-                        '#c9ada7',
-                        '#e36414',
-                        '#ce4257'
-                    ],
-                    borderWidth : 2,
-                    width : 5
-
-
-                }
-            ]
-        },
-        options : {
-            title : {
-                text : "Grafico do Dados",
-                display : true,
-                fontSize : 25
-            },
-            
-            scales : {
-                yAxes : [
-                    {
-                        ticks : {
-                            beginAtZero : true
-                        }
-                    }
-                ]
-            }
-        }
-    })
-
-    // let meu_grafico = new Chart (ctx, {
-    //     type: "bar",
-    //     data:{ 
-    //         labels: motivosDados,
-    //         datasets: [{
-    //             label: "Maiores Rendiemntos do Periodo ",
-    //             data: maioresDados,
-    //             borderWidth: 3,
-    //             borderColor: "rgba(77,166,253,0.85)",
-    //             backgroundColor: "transparent"
-
-    //         }]
-
-    //     }
-    // })
+    
 }
 
 // Função que pega os dados do rendimento inserido e compila em um objeto pra ser registrado em Local host
@@ -271,6 +284,7 @@ function pegaDadosRendimentos (){
             }
             return true
         }
+        
     }
 
     //aqui criamos o objeto baseado na lasse do objeto
@@ -280,6 +294,16 @@ function pegaDadosRendimentos (){
         InseredadosLocal.atualizaID_Obj(mostraDados)
         InseredadosLocal.recuperaTodosRegistros ()
         listaDeDados ()
+
+        if (document.getElementById("teste")){
+            document.getElementById("teste").remove()
+            carrega()
+        }else{
+            console.log("nao tem")
+        }
+        
+        
+        
 
         divTextoCor.className = "modal-header text-success"    
         tituloModal.innerHTML = "Registro efetuado"
@@ -300,7 +324,6 @@ function pegaDadosRendimentos (){
         botao.innerHTML = "Fechar"
         $(`#modalRegistraDespesas`).modal(`show`)
     }
-    
     
 }
 
@@ -504,5 +527,61 @@ function pegaDadosDespesas (){
     }
 
     
+    
 }
+
+class SaloTotal{
+    constructor(){
+        this.saldo 
+    };
+
+    mostraSaldo(){
+        this.saldo = 0
+        let listaDeDados = []
+        listaDeDados = InseredadosLocal.recuperaTodosRegistros ()
+
+        for(let i = 0; i < listaDeDados.length; i++){
+            this.saldo += listaDeDados[i].valor;
+        }
+        
+
+        
+
+        return this.saldo
+    };
+}
+
+let saldim = new SaloTotal()
+
+function carrega(){
+    let checa = document.querySelector("#check_btn")
+    
+    let div_Saldo = document.getElementById("bordaSaldo")
+
+    let cria_Div = document.createElement("div")
+    cria_Div.id = "teste"
+    cria_Div.value = "1"
+    cria_Div.textContent = `R$ ${saldim.mostraSaldo().toFixed(2)}`
+    
+    
+    
+
+    if(checa.checked == true){
+        cria_Div.checked = true
+        console.log("Botão esta On")
+        
+        div_Saldo.appendChild(cria_Div)
+
+        // saldim.mostraSaldo()
+        
+
+    }
+    else if(checa.checked == false){
+        document.querySelector("#teste").remove()
+    }
+}
+
+
+
+
 

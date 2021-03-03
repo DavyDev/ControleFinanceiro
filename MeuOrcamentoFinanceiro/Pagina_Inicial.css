@@ -19,10 +19,19 @@
     
 }
 
+.topoSaldo{
+    
+    background-color: #343a40;
+    color: white;
+}
+
 .labels {
     font-weight: 500
 }
-
+#dropSaldo{
+    position: relative;
+    right: px;
+}
 #line{
     position: relative;
     top: 2px;
@@ -44,3 +53,91 @@
     background-color: #343a40;
     color: #fff;
 }
+
+#bordaSaldo{
+    border: #343a40 1px solid;
+    border-radius: 4px;
+}
+
+.btn_custom{
+    color: #fff;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-link{
+    color: #fff;
+}
+.btn-link:hover{
+    color: #fff;
+    
+}
+
+input[type="checkbox"]{
+    /* position: relative; */
+    width: 56px;
+    height: 25px;
+    appearance: none;
+    background-color: #bdc3c7;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    
+}
+
+input:checked[type="checkbox"]{
+    background-color: #3498db;
+}
+
+input[type="checkbox"]::before{
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 25px;
+    height:25px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: scale(1.1);
+    transition: 3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: .4s;
+}
+
+input:checked[type="checkbox"]::before{
+    left: 30px;
+} 
+
+.toggle{
+    position: relative;
+    display: inline;
+    
+}
+
+label.lab_on{
+    position: absolute;
+    left: 3px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+label.lab_off{
+    position: absolute;
+    right: 3px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+/* #teste::after{
+    background-color: #343a40;
+    height: ;
+    transition: height 3s;
+} */
+
+
+
+

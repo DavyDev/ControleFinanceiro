@@ -57,6 +57,31 @@
 
         <div class="row">
             <!-- Parte onde sera recebida as informações para registar um rendimento-->
+
+            <div class="col-sm-12 mb-4">
+
+                <div id="bordaSaldo">
+
+                    <div id="saldo" class="topoSaldo pt-2 pb-2 navbar navbar-expand-md">
+                        <i class=" ml-3  fas fa-dollar-sign "><span class="navbar-brand ml-3">Saldo atual</span></i> 
+
+                        <ul class="navbar-nav ml-auto mt-1 float-right">
+                            <li class="nav-item toggle">
+                                <label for="oi" class="lab_on onbtn">On</label>
+                                <input id="check_btn" type="checkbox"  onclick="carrega()">
+                               
+                                <label for="" class="lab_off offbtn">Off</label>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
             <div  class="col-md-6 mb-4">
 
                 <div id="bordaRendimento">
@@ -291,7 +316,7 @@
                         Maiores rendimentos no periodo
                     </div>
 
-                    <div id="">
+                    <div id="grafico_1">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
