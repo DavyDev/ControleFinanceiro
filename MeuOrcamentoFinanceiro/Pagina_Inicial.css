@@ -132,11 +132,11 @@ label.lab_off{
     pointer-events: none;
 }
 
-/* #teste::after{
+#teste{
     background-color: #343a40;
-    height: ;
-    transition: height 3s;
-} */
+    color: #fff;
+    
+}
 
 
 
