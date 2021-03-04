@@ -1,4 +1,6 @@
 // Classe que ira verificar se há algum id, caso náo tenha inicia a pagina com um Id.
+let checa = document.querySelector("#check_btn")
+
 class localStorages{
     //A verificação se há um Id é realizado nesta parte
     constructor(){
@@ -212,14 +214,20 @@ function listaDeDados (){
 
         // let true_false  
 
+        let io = 0
         btn.onclick= function deletaRegistro() {
             let btn_id = btn.id
-            
+            io = 1 
             
 
             localStorage.removeItem(btn_id)
 
+
             window.location.reload()
+            
+            
+            
+            
 
         }
 
@@ -553,8 +561,9 @@ class SaloTotal{
 
 let saldim = new SaloTotal()
 
+
 function carrega(){
-    let checa = document.querySelector("#check_btn")
+    
     
     let div_Saldo = document.getElementById("bordaSaldo")
 
@@ -563,6 +572,16 @@ function carrega(){
     cria_Div.value = "1"
     cria_Div.textContent = `R$ ${saldim.mostraSaldo().toFixed(2)}`
     
+    let cria_separacao = document.createElement("div")
+    cria_separacao.id = "separacao"
+    // cria_separacao.textContent = "oi"
+
+    let separa = document.createElement("hr")
+    separa.id = "separa"
+    
+    cria_separacao.appendChild(separa)
+
+    cria_Div.appendChild(cria_separacao)
     
     
 
@@ -571,6 +590,7 @@ function carrega(){
         console.log("Botão esta On")
         
         div_Saldo.appendChild(cria_Div)
+        
 
         // saldim.mostraSaldo()
         
@@ -578,6 +598,7 @@ function carrega(){
     }
     else if(checa.checked == false){
         document.querySelector("#teste").remove()
+        
     }
 }
 

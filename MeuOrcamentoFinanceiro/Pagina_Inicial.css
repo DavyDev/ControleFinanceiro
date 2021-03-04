@@ -1,3 +1,9 @@
+
+
+body{
+    background-color: #8257e66e;
+}
+
 #bordaRendimento{
     border: #007bff solid 2px;
 }
@@ -19,10 +25,26 @@
     
 }
 
-.topoSaldo{
+#bordaSaldo{
     
-    background-color: #343a40;
-    color: white;
+    color: #000;
+    
+    box-shadow: -0px 2px 5px rgba(0, 0, 0, 0.233);
+}
+
+.topoSaldo{
+    border-radius: 5px 5px 0px 0px;
+    background-color: #fbfdff;
+    
+    padding-bottom: 3px;
+
+    
+}
+
+#span_location{
+    position: relative;
+    top: -3px;
+    font-size: 23px;
 }
 
 .labels {
@@ -132,11 +154,36 @@ label.lab_off{
     pointer-events: none;
 }
 
+
+
 #teste{
-    background-color: #343a40;
-    color: #fff;
+    background-color:rgb(255, 255, 255);
     
+    border-radius: 0px 0px 5px 5px;
+    padding: 15px 0px 10px 31px;
+    font-weight: bolder;
+    font-size: 20px;
+    
+
 }
+
+/* @keyframes animacao {
+    from {
+        background-color: #007bff;
+        width: 0px;
+        left: -100px;
+    }
+    to{
+        background-color: #1eff00;
+        width: 70px;
+        left: 00px;
+    }
+} */
+
+
+
+
+
 
 
 

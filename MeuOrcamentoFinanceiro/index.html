@@ -22,12 +22,13 @@
     <title>Meu Oçamento</title>
   </head>
 
-  <body onload="listaDeDados () , listaDeDados_2 ()">
+  <body onload="listaDeDados (), listaDeDados_2 ()">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <div class="container"> 
             <a class="navbar-brand"href="">
                 Logo do Site
+                
             </a>
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#escondeDiv">
@@ -60,15 +61,15 @@
 
             <div class="col-sm-12 mb-4">
 
-                <div id="bordaSaldo">
+                <div id="bordaSaldo" class="border-top-0 border-right-0 border-left-0 border-bottom-0">
 
-                    <div id="saldo" class="topoSaldo pt-2 pb-2 navbar navbar-expand-md">
-                        <i class=" ml-3  fas fa-dollar-sign "><span class="navbar-brand ml-3">Saldo atual</span></i> 
+                    <div id="saldo" class="topoSaldo navbar navbar-expand-md ">
+                        <i class=" ml-3 fas fa-wallet fa-2x"><span id="span_location" class="navbar-brand ml-3">Saldo atual</span></i> 
 
                         <ul class="navbar-nav ml-auto mt-1 float-right">
                             <li class="nav-item toggle">
                                 <label for="oi" class="lab_on onbtn">On</label>
-                                <input id="check_btn" type="checkbox"  onclick="carrega()">
+                                <input id="check_btn" type="checkbox" onclick="carrega()">
                                
                                 <label for="" class="lab_off offbtn">Off</label>
                             </li>
@@ -84,7 +85,7 @@
 
             <div  class="col-md-6 mb-4">
 
-                <div id="bordaRendimento">
+                <div id="bordaRendimento" class="bg-light">
 
                     <div class="topoRendimentos pt-1 pb-1">
                         <i class=" ml-2 fas fa-plus "></i> <span>Rendimentos</span>
@@ -153,7 +154,7 @@
             <!-- Parte onde sera recebida as informações para registar uma despesa-->
             <div  class="col-md-6 ">
 
-                <div id="bordaDespesa">
+                <div id="bordaDespesa" class="bg-light">
 
                     <div class="topoDespesas pt-1 pb-1">
                         <i class=" ml-2 fas fa-minus "></i> <span>Despesas</span>
@@ -231,7 +232,7 @@
 
             <div  class="col-md-6 mb-3">
                 
-                <div id="bordaRegistraRendi">
+                <div id="bordaRegistraRendi" class="bg-light">
 
                     <div class="topoRendimentos  pt-1 pb-1">
                         <i class=" ml-2 mr-2 fas fa-chart-line"></i>
@@ -269,7 +270,7 @@
 
             <div  class="col-md-6 ">
                 
-                <div id="bordaRegistraDespe">
+                <div id="bordaRegistraDespe" class="bg-light">
 
                     <div class="topoDespesas  pt-1 pb-1">
                         <i class=" ml-2 mr-2 fas fa-chart-line"></i>
@@ -309,7 +310,7 @@
 
             <div class="col-md-6">
 
-                <div class="bordaGrafiGastos">
+                <div class="bordaGrafiGastos" class="bg-light">
                      
                     <div class="topoGrafiGastos pt-1 pb-1">
                         <i class="ml-2 mr-2 fas fa-chart-bar"></i>
@@ -325,7 +326,7 @@
 
             <div class="col-md-6">
 
-                <div class="bordaGrafiGastos">
+                <div class="bordaGrafiGastos" class="bg-light">
                      
                     <div class="topoGrafiGastos pt-1 pb-1">
                         <i class="ml-2 mr-2 fas fa-chart-bar"></i>
