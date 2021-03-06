@@ -538,7 +538,7 @@ function pegaDadosDespesas (){
     
 }
 
-class SaloTotal{
+class SaldoTotal{
     constructor(){
         this.saldo 
     };
@@ -559,7 +559,8 @@ class SaloTotal{
     };
 }
 
-let saldim = new SaloTotal()
+let saldim = new SaldoTotal()
+
 
 
 function carrega(){
@@ -570,11 +571,33 @@ function carrega(){
     let cria_Div = document.createElement("div")
     cria_Div.id = "teste"
     cria_Div.value = "1"
-    cria_Div.textContent = `R$ ${saldim.mostraSaldo().toFixed(2)}`
+    cria_Div.textContent = `R$ ${ (saldim.mostraSaldo().toFixed(2)).replace(".", ",")}`
     
     let cria_separacao = document.createElement("div")
     cria_separacao.id = "separacao"
     // cria_separacao.textContent = "oi"
+    
+    let divisa_Ren_Des = document.createElement("div")
+    divisa_Ren_Des.id = "divisa_Ren_Des"
+    divisa_Ren_Des.className = "row"
+    
+    let lado_Esquerdo = document.createElement("div")
+    lado_Esquerdo.id = "lado_Esquerdo"
+    lado_Esquerdo.className = "col-sm-6 text-center"
+    lado_Esquerdo.textContent = "Rendimentos"
+
+    let div_valor_esquerdo = document.createElement("div")
+    div_valor_esquerdo.id = "div_valor_esquerdo"
+    div_valor_esquerdo.textContent = `R$ ${ (saldim.mostraSaldo().toFixed(2)).replace(".", ",")}`
+    lado_Esquerdo.appendChild(div_valor_esquerdo)
+
+
+    //------------------------------------------------
+
+    let lado_Direito = document.createElement("div")
+    lado_Direito.id = "lado_Direito"
+    lado_Direito.className = "col-sm-6 text-center"
+    lado_Direito.textContent = "Despesas"
 
     let separa = document.createElement("hr")
     separa.id = "separa"
@@ -582,6 +605,11 @@ function carrega(){
     cria_separacao.appendChild(separa)
 
     cria_Div.appendChild(cria_separacao)
+
+
+    divisa_Ren_Des.appendChild(lado_Esquerdo)
+    divisa_Ren_Des.appendChild(lado_Direito)
+    cria_Div.appendChild(divisa_Ren_Des)
     
     
 
