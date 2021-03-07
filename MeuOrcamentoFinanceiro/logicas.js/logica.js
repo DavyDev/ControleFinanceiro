@@ -477,6 +477,8 @@ function pegaDadosDespesas (){
     let data_B = document.getElementById("data_B").value
     let descricao_B = document.getElementById("descricao_B").value
     let valor_B = document.getElementById("valor_B").value
+    valor_B = valor_B.replace(",", ".")
+    valor_B = parseFloat(valor_B)
 
     //controle automatico das divs
     let tituloModal = document.getElementById("exampleModalLabel")
@@ -514,6 +516,13 @@ function pegaDadosDespesas (){
         InseredadosLocal_2.recuperaTodosRegistros_2 ()
         listaDeDados_2 ()
 
+        if (document.getElementById("teste")){
+            document.getElementById("teste").remove()
+            carrega()
+        }else{
+            console.log("nao tem")
+        }
+
         divTextoCor.className = "modal-header text-success"    
         tituloModal.innerHTML = "Registro efetuado"
         textoCorpo.innerHTML =  "A despesa foi cadastrada com sucesso!"
@@ -538,6 +547,26 @@ function pegaDadosDespesas (){
     
 }
 
+class DespesaTotal{
+    constructor(){
+        this.despesa
+    }
+
+    mostra_Despesas(){
+        this.despesa = 0
+        let listaDeDados2 = []
+        listaDeDados2 = InseredadosLocal_2.recuperaTodosRegistros_2()
+
+        for(let i = 0; i < listaDeDados2.length; i++){
+            this.despesa += listaDeDados2[i].valor;
+        }
+
+        return this.despesa
+    }
+}
+
+
+
 class SaldoTotal{
     constructor(){
         this.saldo 
@@ -559,19 +588,54 @@ class SaldoTotal{
     };
 }
 
+class CarteiraAtual{
+    constructor(){
+        this.rendimento
+        this.despesa
+    }
+
+    saldoCarteira(){
+
+        this.rendimento = 0
+        let listaDeDados = []
+        listaDeDados = InseredadosLocal.recuperaTodosRegistros ()
+
+        for(let i = 0; i < listaDeDados.length; i++){
+            this.rendimento += listaDeDados[i].valor;
+        }
+        //-------------------------------------------
+        this.despesa = 0
+        let listaDeDados2 = []
+        listaDeDados2 = InseredadosLocal_2.recuperaTodosRegistros_2()
+
+        for(let i = 0; i < listaDeDados2.length; i++){
+            this.despesa += listaDeDados2[i].valor;
+        }
+
+
+        return (this.rendimento - this.despesa)
+        
+    }
+
+}
+
+let despesinha = new DespesaTotal()
 let saldim = new SaldoTotal()
+let carteirinha = new CarteiraAtual()
+
 
 
 
 function carrega(){
     
+    console.log(carteirinha.saldoCarteira())
     
     let div_Saldo = document.getElementById("bordaSaldo")
 
     let cria_Div = document.createElement("div")
     cria_Div.id = "teste"
     cria_Div.value = "1"
-    cria_Div.textContent = `R$ ${ (saldim.mostraSaldo().toFixed(2)).replace(".", ",")}`
+    cria_Div.textContent = `R$ ${ (carteirinha.saldoCarteira().toFixed(2)).replace(".", ",")}`
     
     let cria_separacao = document.createElement("div")
     cria_separacao.id = "separacao"
@@ -599,6 +663,11 @@ function carrega(){
     lado_Direito.className = "col-sm-6 text-center"
     lado_Direito.textContent = "Despesas"
 
+    let div_valor_direito = document.createElement("div")
+    div_valor_direito.id = "div_valor_direito"
+    div_valor_direito.textContent = `R$ ${ (despesinha.mostra_Despesas().toFixed(2)).replace(".", ",")}`
+    lado_Direito.appendChild(div_valor_direito)
+
     let separa = document.createElement("hr")
     separa.id = "separa"
     
@@ -618,9 +687,6 @@ function carrega(){
         console.log("Botão esta On")
         
         div_Saldo.appendChild(cria_Div)
-        
-
-        // saldim.mostraSaldo()
         
 
     }

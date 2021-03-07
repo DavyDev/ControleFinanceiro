@@ -204,6 +204,40 @@ label.lab_off{
     /* #c0392b */
 }
 
+#div_valor_direito{
+
+    color: #c0392b;
+}
+
+
+@media (max-width: 575.98px) {
+
+    #lado_Esquerdo{
+        position: relative;
+        left: -100px;
+        top: 25px;
+    }
+
+    #lado_Direito{
+        position: relative;
+        right: -100px;
+        bottom: 24px;
+    }
+
+ }
+
+ /* Dispositivos small (telefones em modo paisagem, com 576px ou mais) */
+@media (min-width: 576px) and (max-width: 767.98px) { }
+
+ /* Dispositivos médios (tablets com 768px ou mais) */
+@media (min-width: 768px) and (max-width: 991.98px) {  }
+
+/* Dispositivos large (desktops com 992px ou mais) */
+@media (min-width: 992px) and (max-width: 1199.98px) {  }
+
+/* Dispositivos extra large (desktops grandes com 1200px ou mais) */
+@media (min-width: 1200px) {  }
+
 
 
 
