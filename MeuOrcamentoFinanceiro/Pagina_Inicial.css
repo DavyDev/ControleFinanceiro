@@ -212,16 +212,12 @@ label.lab_off{
 
 @media (max-width: 575.98px) {
 
-    #lado_Esquerdo{
-        position: relative;
-        left: -100px;
-        top: 25px;
-    }
+    /* #lado_Esquerdo{
+        
+    } */
 
     #lado_Direito{
-        position: relative;
-        right: -100px;
-        bottom: 24px;
+        margin-top: 10px;
     }
 
  }
