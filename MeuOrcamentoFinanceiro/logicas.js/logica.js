@@ -440,18 +440,16 @@ function listaDeDados_2 (){
         //aqui inserimos aas colunas no tbody para determinado objeto dentro da array
         linha_2.insertCell(0).innerHTML = data_2;
         switch (listaDeDados_2[i].categoria){
-            case "1" : listaDeDados_2[i].categoria = "Salário"
+            case "1" : listaDeDados_2[i].categoria = "Alimentação"
                 break
-            case "2" : listaDeDados_2[i].categoria = "Alimentação"
+            case "2" : listaDeDados_2[i].categoria = "Educação"
                 break
-            case "3" : listaDeDados_2[i].categoria = "Edecação"
+            case "3" : listaDeDados_2[i].categoria = "Lazer"
                 break
-            case "4" : listaDeDados_2[i].categoria = "Lazer"
+            case "4" : listaDeDados_2[i].categoria = "Saúde"
                 break
-            case "5" : listaDeDados_2[i].categoria = "Saúde"
+            case "5" : listaDeDados_2[i].categoria = "Transporte"
                 break
-            case "6" : listaDeDados_2[i].categoria = "Transporte"
-                break    
         }
         linha_2.insertCell(1).innerHTML = listaDeDados_2[i].categoria
         linha_2.insertCell(2).innerHTML = listaDeDados_2[i].descricao
