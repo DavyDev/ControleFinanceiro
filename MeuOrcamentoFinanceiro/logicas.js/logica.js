@@ -54,61 +54,64 @@ class localStorages{
         return arrayDadosInseridos
     }
 
-    cria_Grafico(motivosDados, maioresDados){
+    // cria_Grafico(motivosDados, maioresDados){
+        
         
 
-        // let ctx = document.getElementById("myChart")
+    //     document.getElementById('myChart').innerHTML = ""
 
-        // document.getElementById('myChart').innerHTML = ""
+    //     let ctx = document.getElementById("myChart")
 
-        // let meu_grafico = new Chart (ctx, {
-        //     type : "bar",
-        //     data : {
-        //         labels : motivosDados,
-        //         datasets: [
-        //             {
-        //                 label : "Maiores Rendiementos do Periodo ",
-        //                 data : maioresDados,
-        //                 backgroundColor : [
+        
 
-        //                     '#457b9d',
-        //                     '#f4a261',
-        //                     '#e9c46a',
-        //                     '#02c39a',
-        //                     '#c44536',
-        //                     '#011627',
-        //                     '#283618',
-        //                     '#540b0e',
-        //                     '#c9ada7',
-        //                     '#e36414',
-        //                     '#ce4257'
-        //                 ],
-        //                 borderWidth : 2,
-        //                 width : 5
+    //     let meu_grafico = new Chart (ctx, {
+    //         type : "bar",
+    //         data : {
+    //             labels : motivosDados,
+    //             datasets: [
+    //                 {
+    //                     label : "Maiores Rendiementos do Periodo ",
+    //                     data : maioresDados,
+    //                     backgroundColor : [
+
+    //                         '#457b9d',
+    //                         '#f4a261',
+    //                         '#e9c46a',
+    //                         '#02c39a',
+    //                         '#c44536',
+    //                         '#011627',
+    //                         '#283618',
+    //                         '#540b0e',
+    //                         '#c9ada7',
+    //                         '#e36414',
+    //                         '#ce4257'
+    //                     ],
+    //                     borderWidth : 2,
+    //                     width : 5
 
 
-        //             }
-        //         ]
-        //     },
-        //     options : {
-        //         title : {
-        //             text : "Grafico do Dados",
-        //             display : true,
-        //             fontSize : 25
-        //         },
+    //                 }
+    //             ]
+    //         },
+    //         options : {
+    //             title : {
+    //                 text : "Grafico do Dados",
+    //                 display : true,
+    //                 fontSize : 25
+    //             },
                 
-        //         scales : {
-        //             yAxes : [
-        //                 {
-        //                     ticks : {
-        //                         beginAtZero : true
-        //                     }
-        //                 }
-        //             ]
-        //         }
-        //     }
-        // })
-    }
+    //             scales : {
+    //                 yAxes : [
+    //                     {
+    //                         ticks : {
+    //                             beginAtZero : true
+    //                         }
+    //                     }
+    //                 ]
+    //             }
+    //         }
+    //     })
+    // }
 
 
 }
@@ -191,15 +194,18 @@ function listaDeDados (){
         //aqui inserimos aas colunas no tbody para determinado objeto dentro da array
         linha.insertCell(0).innerHTML = data;
         switch (listaDeDados[i].categoria){
-            case "1" : listaDeDados[i].categoria = "Alimentação"
+            case "1" : listaDeDados[i].categoria = "Salário"
                 break
-            case "2" : listaDeDados[i].categoria = "Educação"
+            
+            case "2" : listaDeDados[i].categoria = "Alimentação"
                 break
-            case "3" : listaDeDados[i].categoria = "Lazer"
+            case "3" : listaDeDados[i].categoria = "Educação"
                 break
-            case "4" : listaDeDados[i].categoria = "Saúde"
+            case "4" : listaDeDados[i].categoria = "Lazer"
                 break
-            case "5" : listaDeDados[i].categoria = "Transporte"
+            case "5" : listaDeDados[i].categoria = "Saúde"
+                break
+            case "6" : listaDeDados[i].categoria = "Transporte"
                 break
         }
         linha.insertCell(1).innerHTML = listaDeDados[i].categoria
@@ -241,10 +247,12 @@ function listaDeDados (){
     console.log(tbody)
     
     console.log("-------------------------")
-
     
 
-    InseredadosLocal.cria_Grafico(motivosDados, maioresDados)
+    // let mostra_Graficos = mostra_Grafico(listaDeDados)
+    // let logica_referencia_grafico = mostra_referencia_Grafico(listaDeDados) 
+
+    // InseredadosLocal.cria_Grafico(logica_referencia_grafico, mostra_Graficos);
     
     
     
@@ -694,6 +702,43 @@ function carrega(){
         document.querySelector("#teste").remove()
         
     }
+}
+
+function sobre_Renderizada(){    
+
+    let conteudo = document.createElement("div")
+    conteudo.id = "conteudoRequest"
+    
+
+    let ajax = new XMLHttpRequest()
+
+    ajax.open("GET", "sobre.html")
+
+    //confirmação de que houve a requisição
+    ajax.onreadystatechange = () => {
+
+        if(ajax.readyState == 4 && ajax.status == 200){
+            if (!(document.getElementById("bloco_1") && !(document.getElementById("bloco_2")))) {
+                
+                document.getElementById("bloco_1").remove()
+                document.getElementById("bloco_2").remove()
+                
+                conteudo.innerHTML = ajax.responseText
+                
+                document.getElementById("centro_tudo").appendChild(conteudo)
+            }
+            
+            
+            
+        }
+    }
+    
+
+
+
+    ajax.send()
+
+    
 }
 
 
