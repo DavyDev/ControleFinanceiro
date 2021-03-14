@@ -443,7 +443,7 @@ function listaDeDados_2 (){
             case "1" : listaDeDados_2[i].categoria = "Salário"
                 break
 
-            case "2" : listaDeDados_2[i].categoria = "S"
+            case "2" : listaDeDados_2[i].categoria = "Alimentação"
                 break
             case "3" : listaDeDados_2[i].categoria = "Educação"
                 break
