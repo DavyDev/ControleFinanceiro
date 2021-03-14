@@ -442,7 +442,8 @@ function listaDeDados_2 (){
         switch (listaDeDados_2[i].categoria){
             case "1" : listaDeDados_2[i].categoria = "Salário"
                 break
-            case "2" : listaDeDados_2[i].categoria = "Alimentação"
+
+            case "2" : listaDeDados_2[i].categoria = "S"
                 break
             case "3" : listaDeDados_2[i].categoria = "Educação"
                 break
